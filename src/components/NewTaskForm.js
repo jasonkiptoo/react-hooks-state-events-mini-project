@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { CATEGORIES } from "../data";
 
-function NewTaskForm() {
+function NewTaskForm({ onFilterTask }) {
+  const [categories] = useState(CATEGORIES);
+
+  const categoryList = CATEGORIES.map((option) => <option>{option}</option>);
+
+  // const handleFilterChange = () => {
+  //   onFilterTask(categories);
+  // };
+
   return (
     <form className="new-task-form">
       <label>
@@ -9,9 +18,7 @@ function NewTaskForm() {
       </label>
       <label>
         Category
-        <select name="category">
-          {/* render <option> elements for each category here */}
-        </select>
+        <select name="category">{categoryList}</select>
       </label>
       <input type="submit" value="Add task" />
     </form>
